@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" content="#ee6c4d">
+  <link rel="shortcut icon" href="icons/icon-192x192.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <title>Budget Tracker</title>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="total">
+      <div class="total">Your Balance<br> $<span id="total">0</span></div>
+    </div>
+
+    <canvas id="myChart"></canvas>
+
+    <div class="form">
+      <input type="text" id="t-name" class="text-input" placeholder="Name of transaction" />
+      <input type="number" min="0" id="t-amount" class="text-input" placeholder="Transaction amount" />
+      <br>
+      <button id="add-btn" class="button-input"><i class="fa fa-plus buttons"></i> Add Funds</button>
+      <button id="sub-btn" class="button-input"><i class="fa fa-minus"></i> Subtract Funds</button>
+      <p class="error"></p>
+    </div>
+
+    <h1 id="heading">Recent Transactions</h1>
+    <div class="transactions">
+      
+      <table cellspacing="0" cellpadding="0">
+        <thead>
+          <th>Transaction</th>
+          <th>Amount</th>
+        </thead>
+        <tbody id="tbody">
+          
+        </tbody>
+      </table>
+    </div>
+    
+    
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  <script src="js/index.js"></script>
+  <script src="js/indexedDb.js"></script>
+  <script type="text/javascript">
+    (function () {
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("./service-worker.js", { scope: "/" })
+          .then(() => console.log("Service Worker registered successfully."))
+          .catch(error => console.log("Service Worker registration failed:", error));
+      }
+    })();
+  </script>
+</body>
+</html>
